@@ -1,0 +1,18 @@
+.title{
+text-align: center;
+size: 10px;
+}
+
+.about{
+padding: 0 10px 5px 10px;
+}
+
+div{
+	background-color: #f5efd5;
+}
+
+img{
+	width: 250px;
+	height: 350px;
+	margin-left: 10px;
+}
