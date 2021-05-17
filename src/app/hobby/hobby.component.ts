@@ -1,24 +1,45 @@
 import { Component, OnInit } from '@angular/core';
 import { WeirdoHobby } from '../hobbyModel';
+import {EditService} from '../edit.service';
 
 @Component({
   selector: 'app-hobby',
   templateUrl: './hobby.component.html',
-  styleUrls: ['./hobby.component.css']
+  styleUrls: ['./hobby.component.css'],
+  providers:[EditService]
 })
 export class HobbyComponent implements OnInit {
 hobby:WeirdoHobby={
-	title:"Мычание", 
-	about:"Коровье мычание, как оказалось так же может стать хобби. Конечно, это может показаться странным, но некоторые люди на самом деле практикуют коровье мычание. У них есть даже свой конкурс на ежегодной ярмарке в штате Висконсин. 10-летний Остин Сиок смог перемычать 80 человек и заслужить победу в конкурсе. Остин много мычал,  начиная с детского сада, а когда его семья прочла о конкурсе, мальчик захотел в нем участвовать. Он тренировался  по несколько раз в день, поэтому и победил."
+	title:"",  
+	about:""
 }
 img1:string='/assets/image/one.jfif';
 img2:string='/assets/image/two.jpg';
-  constructor() { }
+newInf:string="";
+
+  constructor(private editService:EditService) { }
 
   ngOnInit(): void {
-
- 
-
+    this.hobby=this.editService.getHobby();
+    var sd=document.getElementById("sd") as HTMLElement;
+    sd.nodeValue=this.editService.getHobby().about;
   }
 
+  editInform(text:string)
+  {
+    this.editService.editInf(text);
+  }
+
+  getHobby()
+  {
+    var dinNone=document.getElementById("DivInf") as HTMLElement;
+    var AboutHobby=document.getElementById("AboutHobby") as HTMLInputElement;
+    AboutHobby.value=this.editService.getHobby().about;
+
+
+    if(dinNone.style.display=="block")
+    dinNone.style.display="none";
+  else
+  dinNone.style.display="block";
+  }
 }

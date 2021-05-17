@@ -3,4 +3,10 @@
 <p class="about">{{hobby.about}}</p>
 <img src="{{img2}}">
 <img [attr.src]="img1">
+<button (click)="getHobby()">Редактировать</button>
+<div id="DivInf" style="display: none;">
+<textarea [(ngModel)]="newInf" id="AboutHobby" style="width: 400px; height: 200px;"></textarea>
+<button (click)="editInform(newInf)">Сохранить</button>
+</div>
+<p id="sd"></p>
 </div>
